@@ -1,0 +1,11 @@
+{
+  "name": "duolingo-score",
+  "version": "0.0.1",
+  "private": "true",
+  "engines": {
+    "node": "^8.11.4"
+  },
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  }
+}

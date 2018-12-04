@@ -1,7 +1,5 @@
-const fetch = require('node-fetch')
-
 const PROFILE_URL = 'https://www.duolingo.com/2017-06-30/users?username='
-
+const USERNAME = document.location.hash.replace('#','')
 
 function getScore(username, language, callback) {
   // Pull the score for a specific user and language
@@ -26,11 +24,18 @@ function getScore(username, language, callback) {
   }
 
   // Make the API request
-  fetch(PROFILE_URL + 'reustle')
+  fetch(PROFILE_URL + username)
     .then(res => res.json())
     .then(json => handleRes(json))
 
 }
 
-getScore('reustle', 'ja', console.log)
+// TODO not JA only
+getScore(USERNAME, 'ja', res => {
+  if(!res){
+    console.log('error')
+  }
+  document.getElementById('streak').innerHTML = res.streak
+  document.getElementById('score').innerHTML = res.score.toLocaleString()
+})
 
